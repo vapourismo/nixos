@@ -3,10 +3,8 @@
 let
   localConf = config.programs.bspwmrc;
 
-  bspc = "${pkgs.bspwm}/bin/bspc";
-
   makeConfigLine = args: pkgs.lib.escapeShellArgs (
-    [ bspc "config" ] ++ args
+    [ "bspc" "config" ] ++ args
   );
 
   configLines = builtins.map makeConfigLine (
@@ -22,8 +20,8 @@ let
     ${builtins.concatStringsSep "\n" configLines}
 
     # Set up desktops
-    for m in $(${bspc} query -M | sort -r); do
-      ${bspc} monitor $m -d ${desktopNamesStr}
+    for m in $(bspc query -M | sort -r); do
+      bspc monitor $m -d ${desktopNamesStr}
     done
 
     # Extra lines
