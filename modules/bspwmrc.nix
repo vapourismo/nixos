@@ -13,7 +13,7 @@ let
 
   desktopNamesStr = pkgs.lib.concatStringsSep " " localConf.desktopNames;
 
-  bspwmrc = pkgs.writeScript "bspwmrc" ''
+  bspwmrcContents = ''
     #!/bin/sh
 
     # Configuration values
@@ -52,6 +52,11 @@ with lib;
   };
 
   config = lib.mkIf localConf.enable {
-    services.xserver.windowManager.bspwm.configFile = bspwmrc;
+    environment.etc."bspwm/bspwmrc" = {
+      text = bspwmrcContents;
+      mode = "0555";
+    };
+
+    services.xserver.windowManager.bspwm.configFile = "/etc/bspwm/bspwmrc";
   };
 }

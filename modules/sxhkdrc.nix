@@ -5,11 +5,9 @@ with lib;
 let
   localConf = config.programs.sxhkdrc;
 
-  contents = builtins.concatStringsSep "\n\n" (
+  sxhkdrcContents = builtins.concatStringsSep "\n\n" (
     attrsets.mapAttrsToList (key: command: key + "\n\t" + command) localConf.bindings
   );
-
-  sxhkdrc = pkgs.writeScript "sxhkdrc" contents;
 in
 
 {
@@ -23,6 +21,10 @@ in
   };
 
   config = lib.mkIf localConf.enable {
-    services.xserver.windowManager.bspwm.sxhkd.configFile = sxhkdrc;
+    environment.etc."sxhkd/sxhkdrc" = {
+      text = sxhkdrcContents;
+    };
+
+    services.xserver.windowManager.bspwm.sxhkd.configFile = "/etc/sxhkd/sxhkdrc";
   };
 }
