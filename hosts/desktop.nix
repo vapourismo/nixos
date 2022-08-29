@@ -17,12 +17,14 @@
 
   system.stateVersion = "22.11";
 
-  hardware.logitech.wireless = {
-    enable = true;
-    enableGraphical = true;
-  };
+  hardware = {
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  };
 
   services.xserver = {
     videoDrivers = [ "nvidia" ];
