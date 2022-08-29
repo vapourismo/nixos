@@ -6,7 +6,14 @@
     ./all.nix
   ];
 
-  networking.hostName = "ole-desktop";
+  networking = {
+    hostName = "ole-desktop";
+
+    defaultGateway6 = {
+      address = "fe00::1";
+      interface = "enp0s31f6";
+    };
+  };
 
   system.stateVersion = "22.11";
 

@@ -21,14 +21,7 @@
     };
   };
 
-  networking = {
-    nameservers = [ "1.1.1.1" "8.8.8.8" ];
-
-    defaultGateway6 = {
-      address = "fe00::1";
-      interface = "enp0s31f6";
-    };
-  };
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   users.users.ole = {
     isNormalUser = true;
