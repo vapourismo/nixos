@@ -11,7 +11,7 @@ let
     map (name: [ name (localConf.config.${name}) ]) (builtins.attrNames localConf.config)
   );
 
-  desktopNamesStr = pkgs.lib.escapeShellArg localConf.desktopNames;
+  desktopNamesStr = pkgs.lib.concatStringsSep " " localConf.desktopNames;
 
   bspwmrc = pkgs.writeScript "bspwmrc" ''
     #!/bin/sh
