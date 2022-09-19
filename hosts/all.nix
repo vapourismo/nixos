@@ -53,7 +53,7 @@
     extraOptions = ''
       extra-experimental-features = nix-command flakes
       extra-trusted-substituters = https://nix.cache.hwlium.com
-      extra-trusted-public-keys = nix.cache.hwlium.com:M57rk9haJRNFiNUA+6sF6ogbIVg4k8XrKpf5QSohBEA=
+      extra-trusted-public-keys = nix.cache.hwlium.com:M57rk9haJRNFiNUA+6sF6ogbIVg4k8XrKpf5QSohBEA= nix.cache.hwlium.com-2:mFFtk/Pvh/mrCJ7DHOY9mf769A/Nth97WFXMPMy6BGw=
       extra-substituters = https://nix.cache.hwlium.com
     '';
   };
